@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+
+<div class="container-post">
+                    
+    <img src="{{project.image.url}}" alt="{{.title}}">
+    <div class="container-content">
+        <h2>{{project.title | truncatechars:100}} </h2>
+        <p class="date">Ultima actualizacion {{project.fecha_modificacion}}</p>
+        <p class="description" >{{project.description |safe}}</p>
+        <a href="{% url 'entrys:project' project.id %}">Github repo </a>
+    </div>
+    
+
+
+</div>
+
+{%endblock%}

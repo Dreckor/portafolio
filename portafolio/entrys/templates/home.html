@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+
+
+{% block content%}
+
+{% include 'partials/body.html' %}
+
+<section id="projects">
+
+    <div class="container-title">
+        <h2>Algunos de mis proyectos:</h2>
+    </div>
+
+    <div class="glider-container">
+        <div class="glider-contain">
+            <div class="glider">
+                {% for project in projects%}
+                <div class="container-c">
+                    <a href="{% url 'entrys:project' project.id %}">
+                        <img src="{{project.image.url}}" alt="{{.title}}">
+                        <h2>{{project.title | truncatechars:100}} </h2>
+                        <p class="date">Ultima actualizacion {{project.fecha_modificacion}}</p>
+               
+                        <p class="description" >{{project.description |striptags| truncatechars:100}}</p>
+         
+                    </a>
+
+
+                </div>
+                {%endfor%}
+            </div>
+            <button aria-label="Previous" class="glider-prev"><i class="fa fa-chevron-left"></i></button>
+            <button aria-label="Next" class="glider-next"><i class="fa fa-chevron-right"></i></button>
+            <div role="tablist" class="dots"></div>
+
+        </div>
+        
+    </div>
+    <div class="container-title">
+           
+    </div>
+
+</section>
+
+{% include 'partials/about.html' %}
+
+{% include 'partials/form.html' %}
+
+{%endblock%}
